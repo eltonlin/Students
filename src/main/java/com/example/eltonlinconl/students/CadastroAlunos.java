@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class CadastroAlunos extends AppCompatActivity {
 
     String aluno;
+    EditText nomeAluno;
 
     MainActivity main = new MainActivity();
 
@@ -20,16 +21,18 @@ public class CadastroAlunos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_alunos);
 
-        EditText nomeAluno = (EditText) findViewById(R.id.edtNome);
+        nomeAluno = (EditText) findViewById(R.id.edtNome);
         Button btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
 
-        aluno = String.valueOf(nomeAluno.getText());
+
 
 
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                aluno = nomeAluno.getText().toString();
                 main.setListaAlunos(aluno);
                 startActivity(new Intent(CadastroAlunos.this, MainActivity.class));
                 Toast.makeText(CadastroAlunos.this, "Quantidade" + main.getListaAlunos(), Toast.LENGTH_SHORT).show();

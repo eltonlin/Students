@@ -10,21 +10,27 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<String> listaAlunos = new ArrayList<>();
+    private static ArrayList<String> listaAlunos = new ArrayList<>();
     private String[] alunos = {"Elton", "Maria", "Lurdes", "Julia", "Joana", "José", "Lucas"};
     private String nome = "Nome : ";
     private Button btnAluno;
+    private static int count = 1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        for(int i = 0;  i < alunos.length ; i++){
-            listaAlunos.add(alunos[i]);
+        if (count == 1){
+            for(int i = 0;  i < alunos.length ; i++){
+                listaAlunos.add(alunos[i]);
+            }
         }
 
 
@@ -63,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setListaAlunos(String n){
         listaAlunos.add(n);
+        count = count + 1;
     }
 
     public int getListaAlunos(){
